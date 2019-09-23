@@ -1,9 +1,4 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
-import 'dart:async';
-
-import 'package:flutter/services.dart';
 import 'package:facebook_analytics_plugin/facebook_analytics_plugin.dart';
 
 void main() => runApp(MyApp());
@@ -20,8 +15,6 @@ class _MyAppState extends State<MyApp> {
     super.initState();
 
   }
-
-
 
   @override
   Widget build(BuildContext context) {

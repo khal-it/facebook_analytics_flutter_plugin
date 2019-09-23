@@ -3,6 +3,7 @@ package com.facebook_events_plugin.facebook_analytics_plugin;
 import android.os.Bundle;
 
 import com.facebook.FacebookSdk;
+import com.facebook.LoggingBehavior;
 import com.facebook.appevents.AppEventsLogger;
 
 import java.util.Iterator;
@@ -18,24 +19,22 @@ import io.flutter.plugin.common.PluginRegistry.Registrar;
 
 
 
-
-
-
-
-
-
 /** FacebookAnalyticsPlugin */
 public class FacebookAnalyticsPlugin implements MethodCallHandler {
   private final PluginRegistry.Registrar registrar;
   private  final AppEventsLogger appEventsLogger;
 
   private FacebookAnalyticsPlugin(PluginRegistry.Registrar registrar) {
-
     this.registrar = registrar;
     FacebookSdk.setAutoInitEnabled(true);
     FacebookSdk.fullyInitialize();
     System.out.println(FacebookSdk.isInitialized());
     appEventsLogger = AppEventsLogger.newLogger(registrar.context());
+
+    if (BuildConfig.DEBUG) {
+      FacebookSdk.setIsDebugEnabled(true);
+      FacebookSdk.addLoggingBehavior(LoggingBehavior.APP_EVENTS);
+    }
 
   }
 
@@ -51,7 +50,6 @@ public class FacebookAnalyticsPlugin implements MethodCallHandler {
 
   @Override
   public void onMethodCall(MethodCall call, Result result) {
-
     if (call.method.equals("logEvent")) {
       handleLogEvent(call,result);
     } else {
@@ -74,6 +72,7 @@ public class FacebookAnalyticsPlugin implements MethodCallHandler {
     Bundle bundleParams = createBundleFromMap(parameters);
     appEventsLogger.logEvent(eventName, bundleParams);
     result.success(null);
+
 
   }
 
@@ -110,10 +109,7 @@ public class FacebookAnalyticsPlugin implements MethodCallHandler {
       System.out.println(pair.getKey() + " = " + pair.getValue());
       it.remove();
 
-
     }
     return  bundleParams;
-
-
   }
 }
