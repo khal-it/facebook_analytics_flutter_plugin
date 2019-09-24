@@ -17,7 +17,6 @@ A Flutter plugin to use the [Facebook Analytics](https://analytics.facebook.com)
 ## Usage
 To use this plugin, add `facebook_analytics_plugin` as a [dependency in your pubspec.yaml file](https://flutter.io/platform-plugins/). You must also configure firebase analytics for each platform project: Android and iOS (https://developers.facebook.com/quickstarts/ for step by step details).
 
-## Track PageRoute Transitions
 
 
 
