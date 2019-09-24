@@ -23,7 +23,7 @@ To use this plugin, add `facebook_analytics_plugin` as a [dependency in your pub
 
 ## Getting Started
 
-See the [`example`][example] directory for a complete sample app using Google Analytics for Firebase.
+See the [`example`][example] directory for a complete sample app using Facebook Analytics
 
 [example]: https://github.com/khalithartmann/facebook_analytics_flutter_plugin/tree/master/example
 
