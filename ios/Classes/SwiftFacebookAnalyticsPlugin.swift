@@ -13,11 +13,6 @@ public class SwiftFacebookAnalyticsPlugin: NSObject, FlutterPlugin {
     let instance = SwiftFacebookAnalyticsPlugin()
     registrar.addMethodCallDelegate(instance, channel: channel)
     
-
-    
-    
-    
-
   }
 
   public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {

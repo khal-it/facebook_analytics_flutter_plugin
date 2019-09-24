@@ -1,8 +1,8 @@
 name: facebook_analytics_plugin
 description: A new flutter plugin project.
 version: 0.0.1
-author:
-homepage:
+author: Khalit Hartmann <khalithartmann@gmail.com>
+homepage: https://github.com/khalithartmann
 
 environment:
   sdk: ">=2.1.0 <3.0.0"

@@ -28,7 +28,7 @@ class _MyAppState extends State<MyApp> {
             color: Colors.blue,
             child: Text("Log Event"),
             onPressed: ()async{
-              await FacebookAnalyticsPlugin.logEvent(name: "test_event", parameters: {});
+              await FacebookAnalyticsPlugin.logEvent(name: "test_event", parameters: {"button pressed" : "like button"});
             },
           ),
         ),
