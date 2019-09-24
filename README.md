@@ -1,5 +1,9 @@
 
 
+Support: 
+- [X] IOS
+- [X] Android 
+
 # Facebook Analytics Plugin
 
 currently supporting: 
