@@ -58,15 +58,11 @@ public class FacebookAnalyticsPlugin implements MethodCallHandler {
   }
 
   private void handleLogEvent(MethodCall call, Result result) {
-
-    System.out.println(call.argument("parameters"));
     Map<String,Object> parameters =  call.argument("parameters");
     String eventName = call.argument("name");
 
-
     if (parameters == null || parameters.isEmpty()) {
       appEventsLogger.logEvent(eventName);
-      System.out.println("logged event ");
     }
 
     Bundle bundleParams = createBundleFromMap(parameters);
@@ -77,9 +73,7 @@ public class FacebookAnalyticsPlugin implements MethodCallHandler {
   }
 
   private Bundle createBundleFromMap(Map paramMap) {
-    if (paramMap.isEmpty()) {
-      return null;
-    }
+
     Bundle bundleParams = new Bundle();
 
     Iterator it = paramMap.entrySet().iterator();
@@ -90,7 +84,6 @@ public class FacebookAnalyticsPlugin implements MethodCallHandler {
           bundleParams.putString((String)pair.getKey(), (String)pair.getValue());
           break;
         case "Integer":
-          System.out.println("int here bra");
           bundleParams.putInt((String) pair.getKey(), (Integer) pair.getValue());
           break;
         case "Long":
@@ -106,7 +99,6 @@ public class FacebookAnalyticsPlugin implements MethodCallHandler {
           throw new IllegalArgumentException("Unsupported value type: " + pair.getKey().getClass().getSimpleName());
 
       }
-      System.out.println(pair.getKey() + " = " + pair.getValue());
       it.remove();
 
     }

@@ -45,19 +45,15 @@ public class SwiftFacebookAnalyticsPlugin: NSObject, FlutterPlugin {
         for (key, val ) in paramDict {
             switch val {
                 case let i as Int:
-                    print("is int ")
                     convertedParams.updateValue(NSNumber(value: i) , forKey: key)
                     break
                 case let s as String:
-                    print("is string")
                     convertedParams.updateValue(NSString(string: s ), forKey: key)
                     break
                 case let d as Double:
-                    print("is double")
                     convertedParams.updateValue(NSNumber(value: d), forKey: key)
                     break
                 case let b as Bool:
-                    print("is bool")
                     convertedParams.updateValue(NSNumber(value: b ), forKey: key)
                     break
                 default:
