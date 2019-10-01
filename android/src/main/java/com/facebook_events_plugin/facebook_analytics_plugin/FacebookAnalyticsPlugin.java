@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import com.facebook.FacebookSdk;
 import com.facebook.LoggingBehavior;
+import com.facebook.appevents.AppEventsConstants;
 import com.facebook.appevents.AppEventsLogger;
 
 import java.util.Iterator;
@@ -50,12 +51,25 @@ public class FacebookAnalyticsPlugin implements MethodCallHandler {
 
   @Override
   public void onMethodCall(MethodCall call, Result result) {
-    if (call.method.equals("logEvent")) {
-      handleLogEvent(call,result);
-    } else {
-      result.notImplemented();
+    switch (call.method){
+      case "logEvent":
+        handleLogEvent(call,result);
+        result.success(null);
+        break;
+      case "EVENT_NAME_ACHIEVED_LEVEL":
+        logAchieveLevelEvent((String) call.arguments);
+        result.success(null);
+        break;
+      default:
+        result.notImplemented();
+
+
+
     }
+
   }
+
+
 
   private void handleLogEvent(MethodCall call, Result result) {
     Map<String,Object> parameters =  call.argument("parameters");
@@ -68,9 +82,18 @@ public class FacebookAnalyticsPlugin implements MethodCallHandler {
     Bundle bundleParams = createBundleFromMap(parameters);
     appEventsLogger.logEvent(eventName, bundleParams);
     result.success(null);
-
-
   }
+
+
+  private void logAchieveLevelEvent (String level) {
+    Bundle params = new Bundle();
+    params.putString(AppEventsConstants.EVENT_PARAM_LEVEL, level);
+    appEventsLogger.logEvent(AppEventsConstants.EVENT_NAME_ACHIEVED_LEVEL, params);
+  }
+
+
+
+
 
   private Bundle createBundleFromMap(Map paramMap) {
 
