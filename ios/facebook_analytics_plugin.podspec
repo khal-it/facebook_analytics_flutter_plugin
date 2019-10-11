@@ -17,7 +17,6 @@ A new flutter plugin project.
   s.dependency 'Flutter'
   s.dependency 'FBSDKCoreKit', '~> 5.5'
   s.ios.deployment_target = '9.0'
-
-
+  s.static_framework = true
 end
 
