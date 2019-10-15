@@ -46,12 +46,12 @@
       <dict>
       <key>CFBundleURLSchemes</key>
       <array>
-        <string>fb2567735433289225</string>
+        <string>fbFACEBOOK_APP_ID</string>
       </array>
       </dict>
     </array>
     <key>FacebookAppID</key>
-    <string>2567735433289225</string>
+    <string>FACEBOOK_APP_ID</string>
     <key>FacebookDisplayName</key>
     <string>Flutter Plugin Test App</string>
 </dict>
